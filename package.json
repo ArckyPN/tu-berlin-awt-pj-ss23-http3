@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "warp-server": "cd warp/server && go1.18.10 run main.go",
-    "warp-client": "cd warp/player && yarn serve"
+    "warp-client": "cd warp/player && yarn serve",
+    "rush-server": "cd rush/server/src && ./go-media-webtransport-server",
+    "rush-client": "cd rush/client && ./start-http-server-cross-origin-isolated.py"
   },
   "keywords": [],
   "author": "",
