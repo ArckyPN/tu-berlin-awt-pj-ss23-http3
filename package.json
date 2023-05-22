@@ -1,0 +1,13 @@
+{
+  "name": "tu-berlin-awt-pj-ss23-http3",
+  "version": "1.0.0",
+  "description": "- [Evaluation of HTTP/3 for Media Streaming of Advanced Web Technologies at TU Berlin SoSe23](#evaluation-of-http3-for-media-streaming-of-advanced-web-technologies-at-tu-berlin-sose23) - [Prerequisites](#prerequisites) - [Getting started](#getting-started) - [Facebook / RUSH](#facebook--rush)   - [Relevant links](#relevant-links) - [Twitch / WARP](#twitch--warp)   - [Relevant links](#relevant-links-1) - [Cisco / QUICR](#cisco--quicr)   - [Relevant links](#relevant-links-2)",
+  "main": "index.js",
+  "scripts": {
+    "warp-server": "cd warp/server && go1.18.10 run main.go",
+    "warp-client": "cd warp/player && yarn serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
