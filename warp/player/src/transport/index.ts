@@ -50,7 +50,7 @@ export default class Transport {
 			options.serverCertificateHashes = [ props.fingerprint ]
 		}
 
-		const quic = new WebTransport(props.url, options)
+		const quic = new WebTransport(props.url/* , options */)
 		await quic.ready
 		return quic
 	}
