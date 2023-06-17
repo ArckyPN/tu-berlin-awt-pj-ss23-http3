@@ -2,7 +2,7 @@
   - [Findings](#findings)
   - [Meeting](#meeting)
 - [Workshop 2](#workshop-2)
-  - [Warp ( now MoQT )](#warp--now-moqt-)
+  - [Warp / MOQT](#warp--moqt)
     - [How they work:](#how-they-work)
       - [Notable](#notable)
       - [Warp Client](#warp-client)
@@ -10,9 +10,20 @@
       - [MoQT Client](#moqt-client)
       - [MoQt Server](#moqt-server)
   - [RUSH](#rush)
+    - [Problems](#problems)
+    - [How it works](#how-it-works)
+      - [Client](#client)
+        - [Encoder](#encoder)
+        - [Player](#player)
+      - [Server](#server)
   - [QUICR](#quicr)
+    - [Problems](#problems-1)
+    - [How it works](#how-it-works-1)
+      - [Client](#client-1)
+      - [Server](#server-1)
 - [Workshop 3](#workshop-3)
 
+---
 
 # Workshop 1
 
@@ -32,16 +43,21 @@ TO DO:
   - how are they working?
   - benchmarking
 
+---
+---
+
 # Workshop 2
 
-## Warp ( now MoQT )
+## Warp / MOQT
+
+Streaming a video using webtransport-go
 
 ### How they work:
 
 #### Notable
   - uses WebTransport clientside
   - video is played on a ``<canvas>``
-  - there are the 4 bytes "warp" before every message
+  - there are 4 bytes "warp" before every message
   - uses "tracks" for video and audio segments // TODO what are their significance?
 
 #### Warp Client
@@ -85,13 +101,62 @@ Rust: Quiche by Cloudflare
      (I can't even find where the "/watch" endpoint is defined 🫣)
     - I assume, though that it essentially does the same just in Rust and maybe optimized for better performance
 
+---
 
 ## RUSH
-  - Problem: no video on receiver
 
+Demo is a implementation of a streamer streaming video to viewers using webtransport-go.
+
+### Problems
+  - no video on receiver
+
+### How it works
+
+#### Client
+
+There are two client pages
+  - /src-encoder : this is the streamer, who record their webcam and sends the feed to the server
+  - /src-player : watches the stream, receives the video feed from the server
+  
+##### Encoder
+  - latency "realtime", sends one frame at a time
+  - runs audio / video recorder / encoder and sender in dedicated WebWorkers
+    - sender creates a WebTransport connection and sends the data
+
+##### Player
+  - runs audio / video encoder and downloader in dedicated WebWorkers
+  - plays video on a ``<canvas>`` element
+
+#### Server
+  - acts as a relay between streamer (encoder) and viewer (player)
+  - uses webtransport-go
+  - listens on two endpoints:
+    - ``"/moqingest"`` for receiving the stream from the streamer (encoder) 
+      - receives one frame per stream
+      - saves frame to a file
+    - ``"/moqdelivery"`` for sending the stream to the viewer (player)
+      - reads frame from file
+      - sends frame to client
+
+---
 
 ## QUICR
-  - Problem: needs MacOS
 
+Implementation of a video call program using [libquicr](https://github.com/Quicr/libquicr) (API implementation) based on [quicrq](https://github.com/Quicr/quicrq) (library). Allows bidirectional communication or one publisher with multiple subscribers.
+
+### Problems
+-  needs MacOS, make all fails:
+![Rush make error](rush-make-error.png "make error building rush project")
+
+### How it works
+
+#### Client
+  - runs in a dedicated macOS program, not in a browser
+  - 
+
+#### Server
+
+---
+---
 
 # Workshop 3
