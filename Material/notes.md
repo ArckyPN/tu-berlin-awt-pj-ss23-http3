@@ -124,7 +124,7 @@ There are two client pages
     - sender creates a WebTransport connection and sends the data
 
 ##### Player
-  - runs audio / video encoder and downloader in dedicated WebWorkers
+  - runs audio / video decoder and downloader in dedicated WebWorkers
   - plays video on a ``<canvas>`` element
 
 #### Server
