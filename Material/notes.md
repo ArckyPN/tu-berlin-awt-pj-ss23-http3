@@ -2,7 +2,7 @@
   - [Findings](#findings)
   - [Meeting](#meeting)
 - [Workshop 2](#workshop-2)
-  - [Warp ( now MoQT )](#warp--now-moqt-)
+  - [Warp](#warp)
     - [How they work:](#how-they-work)
       - [Notable](#notable)
       - [Warp Client](#warp-client)
@@ -34,7 +34,7 @@ TO DO:
 
 # Workshop 2
 
-## Warp ( now MoQT )
+## Warp
 
 ### How they work:
 
