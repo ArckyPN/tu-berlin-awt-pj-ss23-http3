@@ -55,7 +55,7 @@ TO DO:
   - uses WebTransport clientside
   - video is played on a ``<canvas>``
   - there are 4 bytes "warp" before every message
-  - uses "tracks" for video and audio segments // TODO what are their significance?
+  - uses "tracks" for video and audio segments
 
 #### Warp Client
   - create __Player__ class / needs url (H3 video endpoint), fingerprint (TLS cert stuff), canvas (video output element)
