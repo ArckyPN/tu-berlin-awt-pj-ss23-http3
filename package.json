@@ -8,7 +8,8 @@
     "warp-go-client": "cd warp-go/player && yarn serve",
     "rush-server": "cd rush/server/src && ./go-media-webtransport-server",
     "rush-client": "cd rush/client && ./start-http-server-cross-origin-isolated.py",
-    "warp-rush": "cd warp-rust/ && docker-compose up --build"
+    "rush-chrome": "./rush/server/scripts/start-localhost-test-chrome.sh",
+    "warp-rust": "cd warp-rust/ && sudo docker-compose up --build"
   },
   "keywords": [],
   "author": "",
