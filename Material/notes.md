@@ -22,6 +22,7 @@
       - [Client](#client-1)
       - [Server](#server-1)
 - [Workshop 3](#workshop-3)
+  - [WARP](#warp-1)
 
 ---
 
@@ -157,3 +158,22 @@ Implementation of a video call program using [libquicr](https://github.com/Quicr
 ---
 
 # Workshop 3
+
+## WARP
+Server:
+  - notable additions:
+    - on connection to ``/watch`` an invoker runs several tasks
+      - invoker custom package by Luke Curley to easily run goroutines safely
+      - runs:
+        - runAccept: accepting bidirectional streams, WARP doesn't use bidi stream currently -> so they are just closed immediately
+        - runAcceptUni: accepting unidirectional streams, reading their payload and logging it
+        - runInit: create new stream and send init segment
+        - runAudio: infinite loop sending all audio segments
+        - runVideo: infinite loop sending all video segments
+      - sending segments are added to the invoker as tasks and make sure stream writing doesn't block
+        - Stream.Run task has a chunk buffer, which gets segments appended to it
+    - segments are prioritized by order (earlier -> higher priority)
+
+Client:
+  - notable additions:
+    - 
