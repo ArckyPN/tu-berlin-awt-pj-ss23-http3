@@ -1,0 +1,4 @@
+go 1.20
+
+use ./warp-go/server
+use ./rush/server/src
