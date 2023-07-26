@@ -176,4 +176,7 @@ Server:
 
 Client:
   - notable additions:
-    - 
+    - open WebTransport
+    - listen for incoming unidirectional streams
+    - checks if incoming message starts with "warp"
+    - decodes messages and does some process to display the video on the ``<canvas>``
